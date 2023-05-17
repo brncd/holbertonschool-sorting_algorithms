@@ -7,14 +7,14 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-	unsigned int cycle = 0, i, temp = 0, swapped = 0;
+	unsigned int cycle = 0, i, temp = 0, swapped;
 
 	if (size == 1)
 		return;
 
 	while (cycle != 1)
 	{
-
+		swapped = 0;
 		for (i = 0; i < size; i++)
 		{
 			if (array[i] > array[i + 1])
