@@ -5,7 +5,7 @@
  * @array: Array
  * @size: Size
  */
-void custom_sort(int *array, size_t size)
+void bubble_sort(int *array, size_t size)
 {
     unsigned int cycle = 0, i;
     int temp = 0, swapped = 0;
