@@ -7,7 +7,7 @@
  */
 void custom_sort(int *array, size_t size)
 {
-    unsigned int cycle = 0;
+    unsigned int cycle = 0, i;
     int temp = 0, swapped = 0;
 
     if (size == 1)
@@ -15,7 +15,7 @@ void custom_sort(int *array, size_t size)
     
     while (cycle != 1)
     {
-        for (unsigned int i = 0; i < size - 1; i++)
+        for (i = 0; i < size - 1; i++)
         {
             if ((array[i] > array[i + 1]) && ((i + 1) < size))
             {
