@@ -2,24 +2,21 @@
 
 void insertion_sort_list(listint_t **list)
 {
+	listint_t *current, *insert_point, *compar_node;
+
 	if (!(*list) || !((*list)->next))
 		return;
 
-	listint_t *current;
-    listint_t *insert_point;
-    listint_t *compar_node;
-
-    current = (*list)->next;
+	current = (*list)->next;
 
 	while (current)
 	{
 		insert_point = current->prev;
 		compar_node = current;
 
-		while ((insert_point) && 
-				(compar_node->n < insert_point->n))
+		while (insert_point != NULL && compar_node->n < insert_point->n)
 		{
-			if (insert_point->prev)
+			if (insert_point->prev != NULL)
 				insert_point->prev->next = compar_node;
 			else
 				*list = compar_node;
@@ -28,14 +25,16 @@ void insertion_sort_list(listint_t **list)
 			insert_point->prev = compar_node;
 
 			insert_point->next = compar_node->next;
-			if (compar_node->next)
+			if (compar_node->next != NULL)
 				compar_node->next->prev = insert_point;
 
 			compar_node->prev = insert_point->prev;
 
 			insert_point = insert_point->prev;
+			
 		}
 
 		current = current->next;
 	}
+	print_list(*list);
 }
