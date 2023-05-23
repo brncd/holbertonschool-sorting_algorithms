@@ -6,13 +6,16 @@ void insertion_sort_list(listint_t **list)
 		return;
 
 	listint_t *current;
-	
+
 	current = (*list)->next;
+
+	listint_t *insert_point, *compar_node;
+
 
 	while (current)
 	{
-		listint_t *insert_point = current->prev;
-		listint_t *compar_node = current;
+		insert_point = current->prev;
+		compar_node = current;
 
 		while ((insert_point) && 
 				(compar_node->n < insert_point->n))
