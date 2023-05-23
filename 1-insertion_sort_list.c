@@ -6,11 +6,10 @@ void insertion_sort_list(listint_t **list)
 		return;
 
 	listint_t *current;
+    listint_t *insert_point;
+    listint_t *compar_node;
 
-	current = (*list)->next;
-
-	listint_t *insert_point, *compar_node;
-
+    current = (*list)->next;
 
 	while (current)
 	{
