@@ -61,8 +61,8 @@ void quicksort_recursive(int *array, int low, int high)
         
         pivot = partition(array, low, high);
 
-		quicksort(array, low, pivot);
-		quicksort(array, pivot + 1, high);
+		quicksort_recursive(array, low, pivot);
+		quicksort_recursive(array, pivot + 1, high);
 	}
 }
 
