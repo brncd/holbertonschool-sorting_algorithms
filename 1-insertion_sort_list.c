@@ -1,40 +1,41 @@
 #include "sort.h"
 
+/**
+ * insertion_sort_list - Sorts a doubly linked list of integers in asc order
+ *
+ * @list: Pointer to head of the list
+ */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current, *insert_point, *compar_node;
+	listint_t *current, *temp;
 
-	if (!(*list) || !((*list)->next))
+	if (!list || !(*list) || !((*list)->next))
 		return;
 
 	current = (*list)->next;
 
 	while (current)
 	{
-		insert_point = current->prev;
-		compar_node = current;
-
-		while (insert_point != NULL && compar_node->n < insert_point->n)
+		while (current->prev && current->n < current->prev->n)
 		{
-			if (insert_point->prev != NULL)
-				insert_point->prev->next = compar_node;
+			temp = current->prev;
+			current->prev = temp->prev;
+
+			if (temp->prev)
+				temp->prev->next = current;
 			else
-				*list = compar_node;
+				*list = current;
 
-			compar_node->next = insert_point;
-			insert_point->prev = compar_node;
+			temp->next = current->next;
+			if (current->next)
+				current->next->prev = temp;
 
-			insert_point->next = compar_node->next;
-			if (compar_node->next != NULL)
-				compar_node->next->prev = insert_point;
+			current->next = temp;
+			temp->prev = current;
 
-			compar_node->prev = insert_point->prev;
-
-			insert_point = insert_point->prev;
-			
+			print_list(*list);
 		}
 
 		current = current->next;
 	}
-	print_list(*list);
 }
